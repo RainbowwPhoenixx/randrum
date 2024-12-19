@@ -1,0 +1,10 @@
+img {
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    width: 25%;
+}
+
+#tempo_slider {
+    vertical-align: middle;
+}

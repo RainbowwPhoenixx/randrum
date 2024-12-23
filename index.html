@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Randrum</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -12,18 +13,41 @@
         <h1>Randrum: a randomized drum trainer</h1>
     </div>
 
-
     <div class="slidecontainer">
         Tempo:
-        <input type="range" min="30" max="300" value="120" class="slider" id="tempo_slider" data-show-value="true">
+        <input type="range" min="30" max="300" value="60" class="slider" id="tempo_slider"
+            onchange="updateBPM(this.value)" oninput="updateBPM(this.value)">
     </div>
 
-    <div class="action">
-        <img src="assets/20241216_drumprompt_accent1.png">
-        <img src="assets/20241216_drumprompt_accent2.png">
-        <img src="assets/20241216_drumprompt_accent3.png">
-        <img src="assets/20241216_drumprompt_accent4.png">
-        <img src="assets/20241216_drumprompt_quarternotes.png">
+    <div id="rolling_beats">
+        <div class="beatgroup" id="beatgroup1">
+            <img class="img" src="assets/20241216_drumprompt_accent1.png">
+            <img class="img" src="assets/20241216_drumprompt_accent2.png">
+            <img class="img" src="assets/20241216_drumprompt_accent3.png">
+            <img class="img" src="assets/20241216_drumprompt_accent4.png">
+            <img class="img" src="assets/20241216_drumprompt_quarternotes.png">
+        </div>
+        <div class="beatgroup" id="beatgroup2">
+            <img class="img" src="assets/20241216_drumprompt_accent1.png">
+            <img class="img" src="assets/20241216_drumprompt_accent2.png">
+            <img class="img" src="assets/20241216_drumprompt_accent3.png">
+            <img class="img" src="assets/20241216_drumprompt_accent4.png">
+            <img class="img" src="assets/20241216_drumprompt_quarternotes.png">
+        </div>
+        <div class="beatgroup" id="beatgroup3">
+            <img class="img" src="assets/20241216_drumprompt_accent1.png">
+            <img class="img" src="assets/20241216_drumprompt_accent2.png">
+            <img class="img" src="assets/20241216_drumprompt_accent3.png">
+            <img class="img" src="assets/20241216_drumprompt_accent4.png">
+            <img class="img" src="assets/20241216_drumprompt_quarternotes.png">
+        </div>
+        <div class="beatgroup" id="beatgroup4">
+            <img class="img" src="assets/20241216_drumprompt_accent1.png">
+            <img class="img" src="assets/20241216_drumprompt_accent2.png">
+            <img class="img" src="assets/20241216_drumprompt_accent3.png">
+            <img class="img" src="assets/20241216_drumprompt_accent4.png">
+            <img class="img" src="assets/20241216_drumprompt_quarternotes.png">
+        </div>
     </div>
 
 </body>

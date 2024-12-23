@@ -37,6 +37,7 @@ function setup_measures() {
 
 function updateBPM(value) {
     bpm = value
+    document.getElementById("tempo_display").innerText = value + " BPM"
 }
 
 function step(ts) {
@@ -58,7 +59,7 @@ function step(ts) {
         // generate new notes
         let accents = groups[groups.length - 1].getElementsByClassName("accent");
         for (let accent of accents) {
-            if (Math.random() < 0.5 ) {
+            if (Math.random() < 0.5) {
                 accent.style["display"] = "none"
             } else {
                 accent.style["display"] = "block"

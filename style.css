@@ -4,6 +4,10 @@ img {
     width: 100%;
 }
 
+.slidecontainer {
+    display: inline;
+}
+
 .beatgroup {
     position: relative;
     width: 25%;

@@ -15,8 +15,9 @@
 
     <div class="slidecontainer">
         Tempo:
-        <input type="range" min="30" max="300" value="60" class="slider" id="tempo_slider"
+        <input type="range" min="30" max="300" value="60" class="slider" step="5" id="tempo_slider"
             onchange="updateBPM(this.value)" oninput="updateBPM(this.value)">
+        <span id="tempo_display">60 BPM</span>
     </div>
 
     <div id="rolling_beats">

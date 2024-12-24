@@ -16,3 +16,14 @@ img {
 #tempo_slider {
     vertical-align: middle;
 }
+
+/* to fix width for mobile */
+html,
+body {
+    overflow-x: hidden;
+    height: 100%;
+}
+
+body {
+    position: relative
+}

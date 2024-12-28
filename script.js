@@ -46,10 +46,13 @@ function step(ts) {
     if (last_anim === undefined) {
         last_anim = ts;
     }
-    const elapsed = ts - last_anim;
+    const elapsed_seconds = (ts - last_anim) / 1000;
+    last_anim = ts;
 
-    let bps = bpm / 60;
-    beat_start_pos = beat_start_pos - bps * elapsed / 100;
+    let measures_per_s = bpm / 4 / 60;
+    let measures_to_move = measures_per_s * elapsed_seconds;
+    let vw_to_move = measures_to_move * 100 / measures_on_screen;
+    beat_start_pos = beat_start_pos - vw_to_move;
     if (beat_start_pos < -100 / measures_on_screen) {
         // Move the notes
         for (var i = 0; i < groups.length - 1; i++) {
@@ -75,7 +78,6 @@ function step(ts) {
         image.style["left"] = compute_ith_offset(i) + beat_start_pos + "vw";
     }
 
-    last_anim = ts;
     requestAnimationFrame(step)
 }
 

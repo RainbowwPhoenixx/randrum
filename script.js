@@ -8,6 +8,8 @@ let measures_on_screen = 4;
 var bpm = 60;
 var min_accents_per_measure = 1;
 var max_accents_per_measure = 3;
+var min_doubles_per_measure = 1;
+var max_doubles_per_measure = 3;
 
 // Setup stuff
 window.onload = init;
@@ -32,11 +34,15 @@ function setup_measures() {
         let pos = compute_ith_offset(i)
         beats.innerHTML += `
         <div class="beatgroup" id="beatgroup${i}" style="left: ${pos}vw, width=${width}%">
+            <img class="img beats" src="assets/20241216_drumprompt_quarternotes.png">
             <img class="img accent" src="assets/20241216_drumprompt_accent1.png">
             <img class="img accent" src="assets/20241216_drumprompt_accent2.png">
             <img class="img accent" src="assets/20241216_drumprompt_accent3.png">
             <img class="img accent" src="assets/20241216_drumprompt_accent4.png">
-            <img class="img beats" src="assets/20241216_drumprompt_quarternotes.png">
+            <img class="img double" src="assets/20241216_drumprompt_double1.png">
+            <img class="img double" src="assets/20241216_drumprompt_double2.png">
+            <img class="img double" src="assets/20241216_drumprompt_double3.png">
+            <img class="img double" src="assets/20241216_drumprompt_double4.png">
         </div>`
     }
 }
@@ -64,6 +70,24 @@ function updateMaxAccents(value) {
     }
     max_accents_per_measure = v
     document.getElementById("max_accent_display").innerText = v + " max"
+}
+function updateMinDoubles(value) {
+    let v = Number(value)
+    if (v > max_doubles_per_measure) {
+        v = max_doubles_per_measure
+        document.getElementById("min_double_slider").value = v
+    }
+    min_doubles_per_measure = v
+    document.getElementById("min_double_display").innerText = "min " + v
+}
+function updateMaxDoubles(value) {
+    let v = Number(value)
+    if (v < min_doubles_per_measure) {
+        v = min_doubles_per_measure
+        document.getElementById("max_double_slider").value = v
+    }
+    max_doubles_per_measure = v
+    document.getElementById("max_double_display").innerText = v + " max"
 }
 
 // Scrolling animation
@@ -97,6 +121,16 @@ function step(ts) {
             }
         }
 
+        let doubles_elems = groups[groups.length - 1].getElementsByClassName("double");
+        let doubles = generateDoubles();
+        for (let i = 0; i < 4; i++) {
+            if (doubles[i]) {
+                doubles_elems[i].style["display"] = "block"
+            } else {
+                doubles_elems[i].style["display"] = "none"
+            }
+        }
+
         // Loop the pos
         beat_start_pos = beat_start_pos % (100 / measures_on_screen)
     }
@@ -111,10 +145,18 @@ function step(ts) {
 
 // Returns a list of 4 bools indicating the presence of an accent
 function generateAccents() {
+    return generateFourRandoms(min_accents_per_measure, max_accents_per_measure)
+}
+
+// Returns a list of 4 bools indicating the presence of a double
+function generateDoubles() {
+    return generateFourRandoms(min_doubles_per_measure, max_doubles_per_measure)
+}
+
+function generateFourRandoms(min, max) {
     let accents = [false, false, false, false]
 
-    let numAccents = getRandomInt(min_accents_per_measure, max_accents_per_measure+1)
-    console.log(numAccents)
+    let numAccents = getRandomInt(min, max+1)
 
     // Set the asked number of accents
     for (let i = 0; i < numAccents; i++) {

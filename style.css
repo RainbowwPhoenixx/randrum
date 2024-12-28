@@ -1,21 +1,32 @@
+
+/* All the stuff to make configs okay */
+#config {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.slidercontainer {
+    display: inline;
+}
+
+.slider {
+    vertical-align: middle;
+}
+
+/* Specify relative so that it's not confused */
+.beatgroup {
+    position: relative;
+    width: 25%;
+}
+
+/* Make images be on top of each other */
 img {
     position: absolute;
     top: 50px;
     width: 100%;
 }
 
-.slidecontainer {
-    display: inline;
-}
-
-.beatgroup {
-    position: relative;
-    width: 25%;
-}
-
-#tempo_slider {
-    vertical-align: middle;
-}
 
 /* to fix width for mobile */
 html,

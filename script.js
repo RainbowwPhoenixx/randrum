@@ -1,9 +1,15 @@
-var bpm = 60;
 let last_anim;
 let beat_start_pos = 0;
 
+// Maybe future config options
 let measures_on_screen = 4;
 
+// Config options
+var bpm = 60;
+var min_accents_per_measure = 1;
+var max_accents_per_measure = 3;
+
+// Setup stuff
 window.onload = init;
 function init() {
     setup_measures()
@@ -35,11 +41,32 @@ function setup_measures() {
     }
 }
 
+// Update functions called by html elements
 function updateBPM(value) {
-    bpm = value
+    let v = Number(value)
+    bpm = v
     document.getElementById("tempo_display").innerText = value + " BPM"
 }
+function updateMinAccents(value) {
+    let v = Number(value)
+    if (v > max_accents_per_measure) {
+        v = max_accents_per_measure
+        document.getElementById("min_accent_slider").value = v
+    }
+    min_accents_per_measure = v
+    document.getElementById("min_accent_display").innerText = "min " + v
+}
+function updateMaxAccents(value) {
+    let v = Number(value)
+    if (v < min_accents_per_measure) {
+        v = min_accents_per_measure
+        document.getElementById("max_accent_slider").value = v
+    }
+    max_accents_per_measure = v
+    document.getElementById("max_accent_display").innerText = v + " max"
+}
 
+// Scrolling animation
 function step(ts) {
     let groups = document.getElementsByClassName("beatgroup");
 
@@ -60,12 +87,13 @@ function step(ts) {
         }
 
         // generate new notes
-        let accents = groups[groups.length - 1].getElementsByClassName("accent");
-        for (let accent of accents) {
-            if (Math.random() < 0.5) {
-                accent.style["display"] = "none"
+        let accents_elems = groups[groups.length - 1].getElementsByClassName("accent");
+        let accents = generateAccents();
+        for (let i = 0; i < 4; i++) {
+            if (accents[i]) {
+                accents_elems[i].style["display"] = "block"
             } else {
-                accent.style["display"] = "block"
+                accents_elems[i].style["display"] = "none"
             }
         }
 
@@ -79,6 +107,32 @@ function step(ts) {
     }
 
     requestAnimationFrame(step)
+}
+
+// Returns a list of 4 bools indicating the presence of an accent
+function generateAccents() {
+    let accents = [false, false, false, false]
+
+    let numAccents = getRandomInt(min_accents_per_measure, max_accents_per_measure+1)
+    console.log(numAccents)
+
+    // Set the asked number of accents
+    for (let i = 0; i < numAccents; i++) {
+        let set = false;
+        while (!set) {
+            idx = getRandomInt(0, 4)
+            if (!accents[idx]) {
+                set = true
+                accents[idx] = true
+            }
+        }
+    }
+
+    return accents
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(min + Math.random() * (max - min))
 }
 
 requestAnimationFrame(step)

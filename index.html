@@ -9,15 +9,28 @@
 </head>
 
 <body>
+    <!-- coucou evandar -->
     <div class="header">
         <h1>Randrum: a randomized drum trainer</h1>
     </div>
 
-    <div class="slidecontainer">
-        Tempo:
-        <input type="range" min="30" max="300" value="60" class="slider" step="5" id="tempo_slider"
-            onchange="updateBPM(this.value)" oninput="updateBPM(this.value)">
-        <span id="tempo_display">60 BPM</span>
+    <div id="config">
+        <div class="slidercontainer" id="tempo_config">
+            Tempo:
+            <input type="range" min="30" max="300" value="60" class="slider" step="5" id="tempo_slider"
+                onchange="updateBPM(this.value)" oninput="updateBPM(this.value)">
+            <span id="tempo_display">60 BPM</span>
+        </div>
+    
+        <div class="slidercontainer", id="accent_slider">
+            Accent:
+            <input type="range" min="0" max="4" value="1" class="slider" step="1" id="min_accent_slider"
+                onchange="updateMinAccents(this.value)" oninput="updateMinAccents(this.value)">
+            <span id="min_accent_display">min 1</span>
+            <input type="range" min="0" max="4" value="3" class="slider" step="1" id="max_accent_slider"
+                onchange="updateMaxAccents(this.value)" oninput="updateMaxAccents(this.value)">
+            <span id="max_accent_display">3 max</span>
+        </div>
     </div>
 
     <div id="rolling_beats">

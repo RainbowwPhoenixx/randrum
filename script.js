@@ -35,14 +35,14 @@ function setup_measures() {
         beats.innerHTML += `
         <div class="beatgroup" id="beatgroup${i}" style="left: ${pos}vw, width=${width}%">
             <img class="img beats" src="assets/20241216_drumprompt_quarternotes.png">
-            <img class="img accent" src="assets/20241216_drumprompt_accent1.png">
-            <img class="img accent" src="assets/20241216_drumprompt_accent2.png">
-            <img class="img accent" src="assets/20241216_drumprompt_accent3.png">
-            <img class="img accent" src="assets/20241216_drumprompt_accent4.png">
-            <img class="img double" src="assets/20241216_drumprompt_double1.png">
-            <img class="img double" src="assets/20241216_drumprompt_double2.png">
-            <img class="img double" src="assets/20241216_drumprompt_double3.png">
-            <img class="img double" src="assets/20241216_drumprompt_double4.png">
+            <img class="img accent" src="assets/20241216_drumprompt_accent1.png" draggable="false">
+            <img class="img accent" src="assets/20241216_drumprompt_accent2.png" draggable="false">
+            <img class="img accent" src="assets/20241216_drumprompt_accent3.png" draggable="false">
+            <img class="img accent" src="assets/20241216_drumprompt_accent4.png" draggable="false">
+            <img class="img double" src="assets/20241216_drumprompt_double1.png" draggable="false">
+            <img class="img double" src="assets/20241216_drumprompt_double2.png" draggable="false">
+            <img class="img double" src="assets/20241216_drumprompt_double3.png" draggable="false">
+            <img class="img double" src="assets/20241216_drumprompt_double4.png" draggable="false">
         </div>`
     }
 }

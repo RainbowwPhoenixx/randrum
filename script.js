@@ -5,6 +5,7 @@ let beat_start_pos = 0;
 let measures_on_screen = 4;
 
 // Config options
+var running = true;
 var bpm = 60;
 var min_accents_per_measure = 1;
 var max_accents_per_measure = 3;
@@ -15,6 +16,9 @@ var max_doubles_per_measure = 3;
 window.onload = init;
 function init() {
     setup_measures()
+    requestAnimationFrame(step)
+
+    document.getElementById("startstop").onclick = toggleRunning;
 }
 
 function compute_ith_offset(i) {
@@ -48,6 +52,17 @@ function setup_measures() {
 }
 
 // Update functions called by html elements
+function toggleRunning() {
+    let button = document.getElementById("startstop");
+    running = !running
+    if (running) {
+        button.innerText = "Stop"
+        last_anim = undefined
+        requestAnimationFrame(step)
+    } else {
+        button.innerText = "Start"
+    }
+}
 function updateBPM(value) {
     let v = Number(value)
     bpm = v
@@ -140,7 +155,9 @@ function step(ts) {
         image.style["left"] = compute_ith_offset(i) + beat_start_pos + "vw";
     }
 
-    requestAnimationFrame(step)
+    if (running) {
+        requestAnimationFrame(step)
+    }
 }
 
 // Returns a list of 4 bools indicating the presence of an accent
@@ -156,7 +173,7 @@ function generateDoubles() {
 function generateFourRandoms(min, max) {
     let accents = [false, false, false, false]
 
-    let numAccents = getRandomInt(min, max+1)
+    let numAccents = getRandomInt(min, max + 1)
 
     // Set the asked number of accents
     for (let i = 0; i < numAccents; i++) {
@@ -176,5 +193,3 @@ function generateFourRandoms(min, max) {
 function getRandomInt(min, max) {
     return Math.floor(min + Math.random() * (max - min))
 }
-
-requestAnimationFrame(step)

@@ -56,17 +56,17 @@ function toggleRunning() {
     let button = document.getElementById("startstop");
     running = !running
     if (running) {
-        button.innerText = "Stop"
+        button.innerHTML = '<img src="assets/20241217_drumprompt_stop.png"></img>'
         last_anim = undefined
         requestAnimationFrame(step)
     } else {
-        button.innerText = "Start"
+        button.innerHTML = '<img src="assets/20241217_drumprompt_start.png"></img>'
     }
 }
 function updateBPM(value) {
     let v = Number(value)
     bpm = v
-    document.getElementById("tempo_display").innerText = value + " BPM"
+    document.getElementById("tempo_display").innerText = value
 }
 function updateMinAccents(value) {
     let v = Number(value)
@@ -75,7 +75,7 @@ function updateMinAccents(value) {
         document.getElementById("min_accent_slider").value = v
     }
     min_accents_per_measure = v
-    document.getElementById("min_accent_display").innerText = "min " + v
+    document.getElementById("min_accent_display").innerText = v
 }
 function updateMaxAccents(value) {
     let v = Number(value)
@@ -84,7 +84,7 @@ function updateMaxAccents(value) {
         document.getElementById("max_accent_slider").value = v
     }
     max_accents_per_measure = v
-    document.getElementById("max_accent_display").innerText = v + " max"
+    document.getElementById("max_accent_display").innerText = v
 }
 function updateMinDoubles(value) {
     let v = Number(value)
@@ -93,7 +93,7 @@ function updateMinDoubles(value) {
         document.getElementById("min_double_slider").value = v
     }
     min_doubles_per_measure = v
-    document.getElementById("min_double_display").innerText = "min " + v
+    document.getElementById("min_double_display").innerText = v
 }
 function updateMaxDoubles(value) {
     let v = Number(value)
@@ -102,7 +102,7 @@ function updateMaxDoubles(value) {
         document.getElementById("max_double_slider").value = v
     }
     max_doubles_per_measure = v
-    document.getElementById("max_double_display").innerText = v + " max"
+    document.getElementById("max_double_display").innerText = v
 }
 
 // Scrolling animation

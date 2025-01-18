@@ -6,42 +6,56 @@
     <title>Randrum</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="script.js"></script>
+    <link rel="icon" href="assets/20241217_drumprompt_webicon.png">
 </head>
 
 <body>
     <!-- coucou evandar -->
     <div class="header">
-        <h1>Randrum: a randomized drum trainer</h1>
+        <!-- <h1>Randrum: a randomized drum trainer</h1> -->
+        <img id="header_img" src="assets/20241217_drumprompt_title.png" draggable="false">
     </div>
 
     <div id="config">
-        <button id="startstop" type="button">Stop</button>
-
         <div class="slidercontainer" id="tempo_config">
-            Tempo:
+            <img src="assets/20241217_drumprompt_tempo.png" draggable="false">
             <input type="range" min="30" max="300" value="60" class="slider" step="5" id="tempo_slider"
                 onchange="updateBPM(this.value)" oninput="updateBPM(this.value)">
-            <span id="tempo_display">60 BPM</span>
+            <span id="tempo_display">60</span>
         </div>
-    
-        <div class="slidercontainer", id="accent_slider">
-            Accents:
-            <input type="range" min="0" max="4" value="1" class="slider" step="1" id="min_accent_slider"
+
+        <button id="startstop" type="button"><img src="assets/20241217_drumprompt_stop.png"></button>
+
+        <div class="slidercontainer" id="accent_slider">
+            <img class="config_title" src="assets/20241217_drumprompt_accentsmenu.png" draggable="false">
+            <input type="range" min="0" max="4" value="1" class="slider min_slider" step="1" id="min_accent_slider"
                 onchange="updateMinAccents(this.value)" oninput="updateMinAccents(this.value)">
-            <span id="min_accent_display">min 1</span>
-            <input type="range" min="0" max="4" value="3" class="slider" step="1" id="max_accent_slider"
+            <span class="min_display">
+                <img src="assets/20241217_drumprompt_min.png" class="minmax_img" draggable="false">
+                <span id="min_accent_display">1</span>
+            </span>
+            <input type="range" min="0" max="4" value="3" class="slider max_slider" step="1" id="max_accent_slider"
                 onchange="updateMaxAccents(this.value)" oninput="updateMaxAccents(this.value)">
-            <span id="max_accent_display">3 max</span>
+            <span class="max_display">
+                <img src="assets/20241217_drumprompt_max.png" class="minmax_img" draggable="false">
+                <span id="max_accent_display">3</span>
+            </span>
         </div>
-    
-        <div class="slidercontainer", id="double_slider">
-            Doubles:
-            <input type="range" min="0" max="4" value="1" class="slider" step="1" id="min_double_slider"
+
+        <div class="slidercontainer" id="double_slider">
+            <img class="config_title" src="assets/20241217_drumprompt_doublesmenu.png" draggable="false">
+            <input type="range" min="0" max="4" value="1" class="slider min_slider" step="1" id="min_double_slider"
                 onchange="updateMinDoubles(this.value)" oninput="updateMinDoubles(this.value)">
-            <span id="min_double_display">min 1</span>
-            <input type="range" min="0" max="4" value="3" class="slider" step="1" id="max_double_slider"
+            <span class="min_display">
+                <img src="assets/20241217_drumprompt_min.png" class="minmax_img" draggable="false">
+                <span id="min_double_display">1</span>
+            </span>
+            <input type="range" min="0" max="4" value="3" class="slider max_slider" step="1" id="max_double_slider"
                 onchange="updateMaxDoubles(this.value)" oninput="updateMaxDoubles(this.value)">
-            <span id="max_double_display">3 max</span>
+            <span class="max_display">
+                <img src="assets/20241217_drumprompt_max.png" class="minmax_img" draggable="false">
+                <span id="max_double_display">3</span>
+            </span>
         </div>
     </div>
 

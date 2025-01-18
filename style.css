@@ -1,16 +1,57 @@
 /* All the stuff to make configs okay */
 #config {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+#config>* {
+    text-align: center;
+}
+
+#tempo_config {
+    display: flex;
     flex-direction: column;
 }
 
-.slidercontainer {
-    display: inline;
+#accent_slider,
+#double_slider {
+    display: grid;
 }
 
-.slider {
+.config_title {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.min_slider {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.min_display {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.max_display {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.max_slider {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.minmax_img {
     vertical-align: middle;
+}
+
+#startstop>img {
+    width: 10vw;
 }
 
 /* Specify relative so that it's not confused */
@@ -20,12 +61,14 @@
 }
 
 /* Make images be on top of each other */
-img {
+.img {
     position: absolute;
-    top: 50px;
+    top: 10px;
     width: 100%;
-    
-    /* prevent selecthing the images */
+}
+
+img {
+    /* prevent selecting the images */
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -33,14 +76,25 @@ img {
     user-select: none;
 }
 
+#header_img {
+    width: 100%;
+}
 
 /* to fix width for mobile */
 html,
 body {
     overflow-x: hidden;
     height: 100%;
+    margin: 0;
+    background-color: #649283;
 }
 
 body {
     position: relative
+}
+
+/* About */
+#about_description {
+    margin: auto;
+    text-align: center;
 }

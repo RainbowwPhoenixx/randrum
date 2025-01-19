@@ -88,6 +88,15 @@
     width: 100%;
 }
 
+.needle {
+    position: absolute;
+    top: 0;
+    left: 5%;
+    height: 100%;
+    /* Above the notes */
+    z-index: 10;
+}
+
 img {
     /* prevent selecting the images */
     -webkit-user-select: none;
@@ -95,6 +104,8 @@ img {
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
+    /* To click through the needle */
+    pointer-events: none;
 }
 
 #header_img {

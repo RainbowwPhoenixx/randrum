@@ -32,6 +32,8 @@ function setup_measures() {
         beats.removeChild(beats.lastChild);
     }
 
+    beats.innerHTML += '<img class="needle" src="assets/20241217_drumprompt_needle.png" draggable="false">'
+
     width = 100 / measures_on_screen;
     // Re-create them
     for (let i = 0; i < measures_on_screen + 1; i++) {

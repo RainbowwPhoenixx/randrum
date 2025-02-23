@@ -119,6 +119,7 @@ body {
     height: 100%;
     margin: 0;
     background-color: #649283;
+    max-width: 100%;
 }
 
 body {
